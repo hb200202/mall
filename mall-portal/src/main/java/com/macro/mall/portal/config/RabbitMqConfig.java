@@ -17,18 +17,18 @@ public class RabbitMqConfig {
      */
     @Bean
     DirectExchange orderDirect() {
-        return (DirectExchange) ExchangeBuilder
+        return ExchangeBuilder
                 .directExchange(QueueEnum.QUEUE_ORDER_CANCEL.getExchange())
                 .durable(true)
                 .build();
     }
 
     /**
-     * 订单延迟队列队列所绑定的交换机
+     * 订单延迟队列所绑定的交换机
      */
     @Bean
     DirectExchange orderTtlDirect() {
-        return (DirectExchange) ExchangeBuilder
+        return ExchangeBuilder
                 .directExchange(QueueEnum.QUEUE_TTL_ORDER_CANCEL.getExchange())
                 .durable(true)
                 .build();

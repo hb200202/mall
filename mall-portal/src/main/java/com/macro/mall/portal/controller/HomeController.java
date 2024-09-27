@@ -8,6 +8,7 @@ import com.macro.mall.portal.domain.HomeContentResult;
 import com.macro.mall.portal.service.HomeService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +20,8 @@ import java.util.List;
  * Created by macro on 2019/1/28.
  */
 @Controller
-@Api(tags = "HomeController", description = "首页内容管理")
+@Api(tags = "HomeController")
+@Tag(name = "HomeController", description = "首页内容管理")
 @RequestMapping("/home")
 public class HomeController {
     @Autowired
@@ -50,7 +52,7 @@ public class HomeController {
         return CommonResult.success(productCategoryList);
     }
 
-    @ApiOperation("根据分类获取专题")
+    @ApiOperation("根据分类分页获取专题")
     @RequestMapping(value = "/subjectList", method = RequestMethod.GET)
     @ResponseBody
     public CommonResult<List<CmsSubject>> getSubjectList(@RequestParam(required = false) Long cateId,
